@@ -20,3 +20,5 @@ A (simple) custom protocol was developed for this application. When a file is tr
 
 If the server does not get the above information, it would not be able to properly transfer the file. If you would like to use just the server portion of this application and write your own client, feel free to do so. 
 
+## Concurrency
+The actual transfer of the files on the server is implemented as a `goroutine`, so the server is capable of handling multiple transfers at the same time. Please be aware that this has not been tested thoroughly. 
