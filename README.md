@@ -8,7 +8,7 @@ Start the server
 go run server/main.go
 ```
 
-To send a file to the server, navigate to `client/` and run `go run transfer.go <file>`. 
+To send a file to the server, navigate to `client/` and run `go run transfer.go <file>`, or build the client ahead of time with `go build client/transfer.go`, then use `./transfer <file>`. 
 `<file>` can be either an absolute or relative path. The file will appear in the `server/transferred` directory once the transfer is complete.
 
 ## The Custom Protocol
