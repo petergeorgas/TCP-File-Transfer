@@ -14,7 +14,7 @@ import (
 func main() {
 	args := os.Args
 	if len(args) != 2 {
-		fmt.Printf("Usage: main.go <file>\n")
+		fmt.Printf("Usage: transfer <file>\n")
 		os.Exit(2)
 	}
 
