@@ -1,4 +1,4 @@
-package main
+package transfer
 
 import (
 	"encoding/binary"
@@ -7,32 +7,27 @@ import (
 	"net"
 	"os"
 	"path/filepath"
+	"sync"
 
 	"go.uber.org/zap"
 )
 
-func main() {
-	args := os.Args
-	if len(args) != 2 {
-		fmt.Printf("Usage: transfer <file>\n")
-		os.Exit(2)
-	}
+var logger, err = zap.NewProduction()
 
-	logger, _ := zap.NewProduction()
-
-	fileName := args[1]
+func TransferFile(hostname, fileName string, wg *sync.WaitGroup) {
+	defer wg.Done()
 	file, err := os.Open(fileName)
 	if err != nil {
 		logger.Error("Could not open file: " + fileName)
 		return
 	}
+	defer file.Close()
+
 	baseFileName := filepath.Base(fileName)
 	fmt.Println("FILEPATH: ", baseFileName)
 
-	defer file.Close()
-
 	fmt.Println("Client Started!")
-	conn, err := net.Dial("tcp", "localhost:8080")
+	conn, err := net.Dial("tcp", hostname)
 
 	if err != nil {
 		logger.Error(err.Error())
