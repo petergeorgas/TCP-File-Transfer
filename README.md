@@ -8,7 +8,7 @@ Start the server
 go run server/main.go
 ```
 
-To send file(s) to the server, navigate to `client/` and run `go run main.go tcp-transfer <file_path(s)>`, `<file_paths` may be realtive or absolute. The file(s) will appear in the `server/transferred` directory once the transfer is complete. 
+To send file(s) to the server, navigate to `client/` and run `go run main.go tcp-transfer <file_path(s)>`, `<file_paths>` may be realtive or absolute. The file(s) will appear in the `server/transferred` directory once the transfer is complete. 
 
 ## The Custom Protocol
 A (simple) custom protocol was developed for this application. When a file is transferred, the following are sent (in order):
